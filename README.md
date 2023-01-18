@@ -102,39 +102,101 @@ Q(t+1)=T′Q(t)+TQ(t)′
 ⇒Q(t+1)=T⊕Q(t)
 
 ### Procedure
-/* write all the steps invloved */
+```
+1.Using nand gates and wires construct sr flip flop.
+
+2.Repeat same steps to construct JK,D,T flipflops.
+
+3.Find Rtl logic and timing diagram for all flipflops.
+
+4.End the program.
+````
 
 
 
 ### PROGRAM 
-/*
+```
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+Developed by: LOKESH RAHUL V V
+RegisterNumber:  22004702
+```
+1.SR flipflop:
+```
+module srflipflop(s,r,clk,q,qbar);
+input s,r,clk;
+output q,qbar;
+wire x,y;
+nand(x,s,clk);
+nand(y,r,clk);
+nand(q,x,qbar);
+nand(qbar,y,q);
+endmodule
+```
+2.D flipflop:
+```
+module dflipflop(D,clock,Q,Qbar);
+input D,clock;
+output Q,Qbar;
+assign Dbar = ~D;
+wire X,Y;
+nand(X,D,clock);
+nand(Y,Dbar,clock);
+nand(Q,X,Qbar);
+nand(Qbar,Y,Q);
+endmodule
+```
+3.JK flipflop:
+````
+module jkflipflop(j,k,clk,q,qbar);
+input j,k,clk;
+output q,qbar;
+wire x,y;
+nand(x,j,clk,qbar);
+nand(y,k,clk,q);
+nand(q,x,qbar);
+nand(qbar,y,q);
+endmodule
 
+````
 
-
-
-
-
+4.T flipflip:
+````
+module tflipflop(T,clock,Q,Qbar);
+input T,clock;
+output Q,Qbar;
+wire A,B;
+nand(A,T,clock,Qbar);
+nand(B,T,clock,Q);
+nand(Q,A,Qbar);
+nand(Qbar,B,Q);
+endmodule
+````
+##OUTPUT:
 ### RTL LOGIC FOR FLIPFLOPS 
+1.SR flipflop:
+![image](https://user-images.githubusercontent.com/118423842/213107728-29a08014-c581-4ea4-9b19-bf363c99e7a7.png)
 
+2.D flipflop:
+![image](https://user-images.githubusercontent.com/118423842/213107809-6e8f1abd-95f7-4ce2-baad-982fc1b1c3b3.png)
 
+3.JK flipflop:
+![image](https://user-images.githubusercontent.com/118423842/213107879-6174f8bf-2b46-4d2e-8e80-5f4b124d9d71.png)
 
-
-
-
-
-
+4.T flipflop:
+![image](https://user-images.githubusercontent.com/118423842/213108006-de8fd10e-5b2c-4078-af85-6574276f233d.png)
 
 ### TIMING DIGRAMS FOR FLIP FLOPS 
+1.SR flipflop:
+![image](https://user-images.githubusercontent.com/118423842/213109718-594d421b-94f5-4dab-8a60-ca91f80f513c.png)
 
+2.D flipflop:
+![image](https://user-images.githubusercontent.com/118423842/213109820-d241f5b4-275b-4c61-8684-338e4b10812b.png)
 
+3.JK flipflop:
+![image](https://user-images.githubusercontent.com/118423842/213109912-44ea8824-54f8-4691-bd3f-d85689ed20c2.png)
 
-
-
-
-
+4.T flipflop:
+![image](https://user-images.githubusercontent.com/118423842/213109999-4aa6119e-9dd1-43cf-9e9e-84675b001fda.png)
 
 ### RESULTS 
+Thus, The implementation of SR , JK , D and T flipflops using nand gates are done sucessfully.
